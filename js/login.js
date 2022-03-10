@@ -7,7 +7,7 @@ const enviarDat = document.querySelector("#enviarDat");
 //------------------ CREAR USUARIO -----------------------//
 
 class usuario {
-    constructor (email, nombre, contrasena){
+    constructor (nombre, email, contrasena){
         this.name = nombre;
         this.email = email;
         this.contrasena = contrasena;
@@ -33,9 +33,12 @@ enviarDat.addEventListener("click", function(){
 //------------------ FUNCIONES DEL LOGIN -----------------------//
 
 function verificarLogin (){
-    const emailHtml = document.querySelector("#email");
-    const contraHtml = document.querySelector("#contra");
-    if (emailHtml.value == nUsuario.email || contraHtml.value == nUsuario.contrasena){
+    let emailHtml = document.querySelector("#email");
+    let contraHtml = document.querySelector("#contra");
+    
+    console.log(emailHtml.value,nUsuario.email,contraHtml.value,nUsuario.contrasena);
+
+    if (emailHtml.value === nUsuario.email && contraHtml.value === nUsuario.contrasena){
          
         const Toast = Swal.mixin({
             toast: true,

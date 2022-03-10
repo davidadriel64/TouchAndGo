@@ -22,39 +22,75 @@ const Nparejas = [];
         Nparejas.push(new pareja("4", "Tamara", "21", "soy muy intelectual, muy inteligente", "fumar", "1"));
         Nparejas.push(new pareja("5", "Naty", "29", "soy muy intelectual, muy inteligente", "fumar", "0"));
 
-function todas(){
+//------------------ CREAR funciones-----------------------//
 
-    console.log("Estas son todas las chicas disponibles");
-    Nparejas.forEach(parejas => {
 
-        alert(parejas.nombre);
-        console.log(parejas.nombre);
-        alert
-    });
-}
+          function limpiarHTML(){
+            while(contenedorUL.firstChild){ //Mientras el contendor tenga un hijo
+              contenedorUL.removeChild(contenedorUL.firstChild) //Removemos ese hijo
+            }
+          }
 
-function bebedoras(){
+          function todas(){
 
-    const bebedoras = Nparejas.filter(pareja =>
-    pareja.interes === "beber")
-    console.log("La siguientes son bebedoras");
+            limpiarHTML(); //Antes de insertar nuevo contenido limpiamos el anterior
 
-    bebedoras.forEach(parejas => {
-            alert(parejas.nombre);
-        console.log(parejas.nombre);
+            Nparejas.forEach( persona => { //Recorrer el arreglo
+                
+                const li = document.createElement('li'); //Por cada elemento crear un li
+                li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center my-2");
+                li.textContent = `${persona.nombre} tiene ${persona.edad} años y le gusta ${persona.interes}.`; //Insertar contenido dentro del li
+                contenedorUL.appendChild(li); //Insertar el li dentro del ul contenedor
+              })
+          }
 
-    });
-}
+          function bebedoras(){
 
-function fumadoras(){
+            limpiarHTML(); //Antes de insertar nuevo contenido limpiamos el anterior
 
-    const fumadoras = Nparejas.filter(pareja =>
-    pareja.interes === "fumar")
-    console.log("La siguientes son fumadoras");
+            const bebedoras = Nparejas.filter(pareja =>
+              pareja.interes === "beber")
+              
+              bebedoras.forEach( persona => { //Recorrer el arreglo
+                
+                const li = document.createElement('li'); //Por cada elemento crear un li
+                li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center my-2");
+                li.textContent = `${persona.nombre} le gusta: ${persona.interes}.`; //Insertar contenido dentro del li
+                contenedorUL.appendChild(li); //Insertar el li dentro del ul contenedor
+              })
+          }
 
-    fumadoras.forEach(parejas => {
-            alert(parejas.nombre);
-        console.log(parejas.nombre);
-        
-    });
-}
+            function fumadoras(){
+
+                limpiarHTML(); //Antes de insertar nuevo contenido limpiamos el anterior
+
+                const fumadoras = Nparejas.filter(pareja =>
+                  pareja.interes === "fumar")
+                  
+                  fumadoras.forEach( persona => { //Recorrer el arreglo
+                    
+                    const li = document.createElement('li'); //Por cada elemento crear un li
+                    li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center my-2");
+                    li.textContent = `${persona.nombre} le gusta: ${persona.interes}.`; //Insertar contenido dentro del li
+                    contenedorUL.appendChild(li); //Insertar el li dentro del ul contenedor
+                  })
+            }
+
+//------------------ MOSTRAR parejas -----------------------//
+
+      const contenedorUL = document.querySelector('#contenedor'); //ul que esta en el HTML
+
+                  function insertarParejas(){
+                    
+                    limpiarHTML(); //Antes de insertar nuevo contenido limpiamos el anterior
+                    
+                    Nparejas.forEach( persona => { //Recorrer el arreglo
+                      
+                      const li = document.createElement('li'); //Por cada elemento crear un li
+                      li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center my-2");
+                      li.textContent = `${persona.nombre} tiene ${persona.edad} años y le gusta ${persona.interes}.`; //Insertar contenido dentro del li
+                      contenedorUL.appendChild(li); //Insertar el li dentro del ul contenedor
+                    })
+                  }
+
+      insertarParejas();
