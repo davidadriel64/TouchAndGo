@@ -170,3 +170,6 @@ function mostrarPareja(){
          function redireccionar() {
           setTimeout("location.href='../../index.html'", 1000);
         }
+
+
+        
