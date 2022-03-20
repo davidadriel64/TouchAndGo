@@ -1,96 +1,172 @@
 // App corazon
 // primera entrega 
 
+
 //------------------ CREAR parejas-----------------------//
 
-class pareja {
-    constructor (id, nombre, edad, biografia, interes, like){
-        this.id = id;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.biografia = biografia;
-        this.interes = interes;
-        this.like = like;
-    }
-};
+let Nparejas = JSON.parse(localStorage.getItem('parejas'));
 
-const Nparejas = [];
-        Nparejas.push(new pareja("0", "Julia", "22", "soy muy intelectual, muy inteligente", "beber", "0"));
-        Nparejas.push(new pareja("1", "Eliana", "18", "soy muy intelectual, muy inteligente", "beber", "1"));
-        Nparejas.push(new pareja("2", "Pamela", "34", "soy muy intelectual, muy inteligente", "bailar", "1"));
-        Nparejas.push(new pareja("3", "Vicky", "24", "soy muy intelectual, muy inteligente", "bailar", "0"));
-        Nparejas.push(new pareja("4", "Tamara", "21", "soy muy intelectual, muy inteligente", "fumar", "1"));
-        Nparejas.push(new pareja("5", "Naty", "29", "soy muy intelectual, muy inteligente", "fumar", "0"));
+//------------------ mostrar parejas-----------------------//
+
+mostrarPareja();
+
+//------------------ CREAR EVENTOS-----------------------//
+
+document.getElementById("like").addEventListener("click", like);
+document.getElementById("volver").addEventListener("click", volver);
+document.getElementById("disLike").addEventListener("click", disLike);
+document.getElementById("salir").addEventListener("click", eliminar);
 
 //------------------ CREAR funciones-----------------------//
 
 
-          function limpiarHTML(){
-            while(contenedorUL.firstChild){ //Mientras el contendor tenga un hijo
-              contenedorUL.removeChild(contenedorUL.firstChild) //Removemos ese hijo
-            }
-          }
+function mostrarPareja(){
+  let i = JSON.parse(localStorage.getItem('indice'));
+  
+      if (Nparejas[i].visto === "false") {
+          limpiarHTML()
+            document.getElementById("nombre").innerHTML = Nparejas[i].nombre ;
+            document.getElementById("edad").innerHTML = Nparejas[i].edad+" años" ;
+            document.getElementById("bio").innerHTML = Nparejas[i].biografia ;
+            document.getElementById("intereses").innerHTML = Nparejas[i].intereses ;
 
-          function todas(){
+            let img = new Image();  
+                img.src = Nparejas[i].img;
+                img.style = 'width: 100%;';
+                var box = document.getElementById('box');
+                box.appendChild(img);
+                } 
+         
+      }
 
-            limpiarHTML(); //Antes de insertar nuevo contenido limpiamos el anterior
+      function like(){
+        let i = JSON.parse(localStorage.getItem('indice'));
+        Nparejas[i].visto = "true";
+        localStorage.setItem('parejas', JSON.stringify(Nparejas));
 
-            Nparejas.forEach( persona => { //Recorrer el arreglo
-                
-                const li = document.createElement('li'); //Por cada elemento crear un li
-                li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center my-2");
-                li.textContent = `${persona.nombre} tiene ${persona.edad} años y le gusta ${persona.interes}.`; //Insertar contenido dentro del li
-                contenedorUL.appendChild(li); //Insertar el li dentro del ul contenedor
+        let misLikes = JSON.parse(localStorage.getItem('misLikes'));
+        misLikes[i].like = 1;
+
+        localStorage.setItem('misLikes', JSON.stringify(misLikes));
+        i = i+1;
+        localStorage.setItem('indice', JSON.stringify(i));
+
+        if (Nparejas[i].like === misLikes[i].like) {
+          let timerInterval
+              Swal.fire({
+                title: 'MATCH!!!!',
+                html: 'HOY LA PONES',
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: () => {
+                  Swal.showLoading()
+                  const b = Swal.getHtmlContainer().querySelector('b')
+                  timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                  }, 100)
+                },
+                willClose: () => {
+                  clearInterval(timerInterval)
+                }
+              }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                  console.log('I was closed by the timer')
+                }
               })
-          }
+        }
+        
+        mostrarPareja()
 
-          function bebedoras(){
 
-            limpiarHTML(); //Antes de insertar nuevo contenido limpiamos el anterior
+      }
+      
+      function disLike(){
+        let i = JSON.parse(localStorage.getItem('indice'));
+        Nparejas[i].visto = "true";
+        localStorage.setItem('parejas', JSON.stringify(Nparejas));
 
-            const bebedoras = Nparejas.filter(pareja =>
-              pareja.interes === "beber")
-              
-              bebedoras.forEach( persona => { //Recorrer el arreglo
-                
-                const li = document.createElement('li'); //Por cada elemento crear un li
-                li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center my-2");
-                li.textContent = `${persona.nombre} le gusta: ${persona.interes}.`; //Insertar contenido dentro del li
-                contenedorUL.appendChild(li); //Insertar el li dentro del ul contenedor
+        let misLikes = JSON.parse(localStorage.getItem('misLikes'));
+        misLikes[i].like = 0;
+
+        localStorage.setItem('misLikes', JSON.stringify(misLikes));
+        i = i+1;
+        localStorage.setItem('indice', JSON.stringify(i));
+
+        if (Nparejas[i].like === 1) {
+          let timerInterval
+              Swal.fire({
+                title: ' TE PERDISTE UN MATCH!!!!',
+                html: 'COMPRA PREMIUM Y HOY LA PONES',
+                timer: 4000,
+                timerProgressBar: true,
+                didOpen: () => {
+                  Swal.showLoading()
+                  const b = Swal.getHtmlContainer().querySelector('b')
+                  timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                  }, 100)
+                },
+                willClose: () => {
+                  clearInterval(timerInterval)
+                }
+              }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                  console.log('I was closed by the timer')
+                }
               })
-          }
+        }
+        
+        mostrarPareja()
 
-            function fumadoras(){
+      }
 
-                limpiarHTML(); //Antes de insertar nuevo contenido limpiamos el anterior
+      function volver(){
+        Swal.fire(
+          'Banca la toma!',
+          'Primero compra el premium ratata',
+          'danger'
+        )
+      }
 
-                const fumadoras = Nparejas.filter(pareja =>
-                  pareja.interes === "fumar")
-                  
-                  fumadoras.forEach( persona => { //Recorrer el arreglo
-                    
-                    const li = document.createElement('li'); //Por cada elemento crear un li
-                    li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center my-2");
-                    li.textContent = `${persona.nombre} le gusta: ${persona.interes}.`; //Insertar contenido dentro del li
-                    contenedorUL.appendChild(li); //Insertar el li dentro del ul contenedor
-                  })
-            }
+      function limpiarHTML(){
+           while(box.firstChild){ //Mientras el contendor tenga un hijo
+           box.removeChild(box.firstChild) //Removemos ese hijo
+           }
+      }
 
-//------------------ MOSTRAR parejas -----------------------//
 
-      const contenedorUL = document.querySelector('#contenedor'); //ul que esta en el HTML
+//------------------ MOSTRAR MATCH -----------------------//
 
-                  function insertarParejas(){
-                    
-                    limpiarHTML(); //Antes de insertar nuevo contenido limpiamos el anterior
-                    
-                    Nparejas.forEach( persona => { //Recorrer el arreglo
-                      
-                      const li = document.createElement('li'); //Por cada elemento crear un li
-                      li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center my-2");
-                      li.textContent = `${persona.nombre} tiene ${persona.edad} años y le gusta ${persona.interes}.`; //Insertar contenido dentro del li
-                      contenedorUL.appendChild(li); //Insertar el li dentro del ul contenedor
-                    })
-                  }
 
-      insertarParejas();
+
+          const contenedor = document.querySelector('#match'); //ul que esta en el HTML
+
+          function finParejas(){
+          
+            limpiarHTML(); //Antes de insertar nuevo contenido limpiamos el anterior
+             
+            const img = document.createElement('img'); //Por cada elemento crear un li
+             img.setAttribute("style", "border: 5px solid #fff;");
+             img.setAttribute("scr", "https://us.123rf.com/450wm/asjack/asjack1601/asjack160100103/50573933-hombre-apuesto-joven-elegante-con-gafas-y-wathers-.jpg?ver=6");
+           
+            img.textContent = ``; //Insertar contenido dentro del li
+             contenedor.appendChild(img); //Insertar el li dentro del ul contenedor
+            
+         }
+
+
+//------------------ ELIMINAR DATOS -----------------------//
+
+          function eliminar(){
+            redireccionar()
+            localStorage.removeItem(indice);
+            localStorage.removeItem(parejas);
+            localStorage.removeItem(misLikes);
+          
+         }
+
+         function redireccionar() {
+          setTimeout("location.href='../../index.html'", 1000);
+        }

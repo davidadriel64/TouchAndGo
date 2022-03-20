@@ -1,5 +1,30 @@
 // primera entrega 
 
+
+//------------------ CREAR datos app -----------------------//
+
+const indice = 0;
+const parejas = [
+    { 'id':0,'img':'/img/mujer0.jpg','nombre':'Julia','edad':44,'biografia':'Ser feliz no significa tener una vida perfecta, sino saber reconocer la belleza y el valor de todas las imperfecciones','intereses':'beber','like':0,'visto':'false' },
+    { 'id':1,'img':'/img/mujer1.jpg','nombre':'Pamela','edad':33,'biografia':'Abre tus brazos al cambio, pero no dejes de lado tus valores','intereses':'Fumar','like':1,'visto':'false' },
+    { 'id':2,'img':'/img/mujer2.jpg','nombre':'jeny','edad':43,'biografia':'La única persona que necesitas en tu vida, es aquella que te demuestre que te necesita en la suya','intereses':'Marihuana','like':1,'visto':'false' },
+    { 'id':3,'img':'/img/mujer3.jpg','nombre':'La diana','edad':22,'biografia':'Una actitud positiva puede hacer sueños realidad','intereses':'bailar','like':0,'visto':'false' },
+    { 'id':4,'img':'/img/mujer4.jpg','nombre':'Tu turrita','edad':23,'biografia':'Hee Guuachin rEsscateense Loqoo ,, Qee omdaa Loogiis ? Se viene a hacEr Loos qAAretas aqaa ! Tomense el re paaLo Gilees Ortiivas ,, Deejen de boqiArrr Porqe Laas viLLeras no leess QaagamOo LAA pija a usteede Guachoo','intereses':'Correr','like':1,'visto':'false' },
+    { 'id':5,'img':'/img/mujer5.jpg','nombre':'Intensamente','edad':26,'biografia':'Y cuanto más intensamente ames, más intenso será el dolor futuro','intereses':'Ser intensa','like':0,'visto':'false' },
+  ];
+const misLikes = [
+    { 'id':0,'like':0},
+    { 'id':1,'like':0},
+    { 'id':2,'like':0},
+    { 'id':3,'like':0},
+    { 'id':4,'like':0},
+    { 'id':5,'like':0},
+  ];
+  
+    localStorage.setItem('parejas', JSON.stringify(parejas));
+    localStorage.setItem('indice', JSON.stringify(indice));
+    localStorage.setItem('misLikes', JSON.stringify(misLikes));
+  
 // -------------------- CONSTANTES DOM LOGIN Y VARIABLES ----------------------------//
 
 const enviarDat = document.querySelector("#enviarDat");
