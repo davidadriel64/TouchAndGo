@@ -24,11 +24,13 @@ function mostrarPareja(){
   let i = JSON.parse(localStorage.getItem('indice'));
   
       if (Nparejas[i].visto === "false") {
-          limpiarHTML()
+            limpiarHTML()
             document.getElementById("nombre").innerHTML = Nparejas[i].nombre ;
             document.getElementById("edad").innerHTML = Nparejas[i].edad+" años" ;
             document.getElementById("bio").innerHTML = Nparejas[i].biografia ;
             document.getElementById("intereses").innerHTML = Nparejas[i].intereses ;
+            document.getElementById("interesesDos").innerHTML = Nparejas[i].interesesDos ;
+            document.getElementById("interesesTres").innerHTML = Nparejas[i].interesesTres ;
 
             let img = new Image();  
                 img.src = Nparejas[i].img;
@@ -75,9 +77,9 @@ function mostrarPareja(){
                 }
               })
         }
-        
+        animar()
         mostrarPareja()
-
+        
 
       }
       
@@ -141,20 +143,9 @@ function mostrarPareja(){
 
 
 
-          const contenedor = document.querySelector('#match'); //ul que esta en el HTML
-
-          function finParejas(){
-          
-            limpiarHTML(); //Antes de insertar nuevo contenido limpiamos el anterior
-             
-            const img = document.createElement('img'); //Por cada elemento crear un li
-             img.setAttribute("style", "border: 5px solid #fff;");
-             img.setAttribute("scr", "https://us.123rf.com/450wm/asjack/asjack1601/asjack160100103/50573933-hombre-apuesto-joven-elegante-con-gafas-y-wathers-.jpg?ver=6");
-           
-            img.textContent = ``; //Insertar contenido dentro del li
-             contenedor.appendChild(img); //Insertar el li dentro del ul contenedor
+          function animar(){
             
-         }
+}
 
 
 //------------------ ELIMINAR DATOS -----------------------//
@@ -168,7 +159,7 @@ function mostrarPareja(){
          }
 
          function redireccionar() {
-          setTimeout("location.href='../../index.html'", 1000);
+          location.href='../../index.html';
         }
 
 

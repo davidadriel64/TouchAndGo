@@ -7,7 +7,8 @@
     <meta name="author" content="">
     <meta name="generator" content="">
     <title>APP</title>
-
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+   
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="../../css/cover.css" rel="stylesheet">
@@ -15,6 +16,10 @@
     
   </head>
   <body class="d-flex h-100 text-white" style="background-color: #3f51b5!important;">
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    AOS.init();
+</script>
     <div class="cover-container d-flex w-100 h-100  mx-auto flex-column">
         <header style="background: floralwhite;box-shadow: 0px 0px 20px 0px #000000;">
             <div class="px-2 py-1 text-white">
@@ -53,7 +58,7 @@
             <div class="image" style="border-radius: 30px;border: 2px solid #ebebeb;background-color: darkslategrey;">
               <img src="https://us.123rf.com/450wm/asjack/asjack1601/asjack160100103/50573933-hombre-apuesto-joven-elegante-con-gafas-y-wathers-.jpg?ver=6" style="border: 5px solid #fff;">
               <button type="text" class="btn btn-primary position-relative" style="border: 0px solid #fff;background: #fff0;color: #ffffff;font-family: inherit;font-weight: 500;">
-                Hola! Juan Carlos
+               <a class="text-white"href="perfil.html"> Hola! Juan Carlos</a>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   Ver Perfil
                         <span class="visually-hidden">Ver Perfil</span>
@@ -95,9 +100,9 @@
                 </div>
               </div>
               <footer id="bio" class="blockquote-footer"></footer>
-            
-                <p class="text-dark">Me destaco en: <span id="intereses" class="badge bg-info "></span></p>
-              
+                <span id="intereses" class="badge bg-info "></span>
+                <span id="interesesDos" class="badge bg-info "></span>
+                <span id="interesesTres" class="badge bg-info "></span>
             </blockquote>
           </div>
 
