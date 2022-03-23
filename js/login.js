@@ -100,9 +100,5 @@ function redireccionar() {
 function validarDatos(){
     const email = document.querySelector("#email");
     const contra = document.querySelector("#contra");
-    if (email.value == "" || contra.value == "" ){
-        return false        
-            }else{
-                 return true
-                    } 
+    const data = (email.value == "" || contra.value == "" ) ? false : true ; return data
 }
