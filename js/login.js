@@ -11,7 +11,9 @@ const parejas = [
     { 'id':3,'img':'../../img/mujer3.jpg','nombre':'La diana','edad':22,'biografia':'Una actitud positiva puede hacer sueños realidad','intereses':'bailar','interesesDos':'Salir a tomar algo','interesesTres':'Que me aten','like':0,'visto':'false' },
     { 'id':4,'img':'../../img/mujer4.jpg','nombre':'Tu turrita','edad':23,'biografia':'Hee rEsscateense Loqoo ,, Qee omdaa ? Se viene a hacEr Loos qAAretas aqaa ! Tomense el re paaLo, Deejen de boqiArrr','intereses':'Correr','interesesDos':'Tu vishusha','interesesTres':'Tenes hora?','like':1,'visto':'false' },
     { 'id':5,'img':'../../img/mujer5.jpg','nombre':'Cristina','edad':26,'biografia':'Y cuanto más intensamente ames, más intenso será el dolor futuro','intereses':'Ser intensa','interesesDos':'Mirarte fijo','interesesTres':'Contestame rapido','like':0,'visto':'false' },
-  ];
+    { 'id':6,'visto':'true' },
+ 
+];
 const misLikes = [
     { 'id':0,'like':0},
     { 'id':1,'like':0},

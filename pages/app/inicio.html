@@ -65,16 +65,16 @@
                 </span>
               </button> 
               </div>
-               <button type="button" class="btn btn-outline-danger" id="salir">Salir</button>
+               <a class="btn btn-outline-danger" onclick="eliminar()">Salir</a>
           </div>
         </div>
-        <div id="match" class="card mx-3 my-3" >
-          <div class="card-body">
+        <div class="card mx-3 my-3" >
+          <div id="fin" class="card-body">
             <div id="parejas" class="card text-white">
              <div class="img-fluid" id="box"></div>
               <div class="card-img-overlay">
                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="text-shadow: 0px 1px 7px #000;position: relative;float: right; color: #fff;border: 2px solid rgba(255, 255, 255, 0);">
-                  Ver Info
+                  Ver fotos
                 </button>
                 <h5 id="nombre" class="card-title" style="text-shadow: 0px 1px 7px #000;font-size: xx-large;"></h5>
                 <p id="edad" class="card-text" style="text-shadow: 0px 1px 7px #000;font-size: x-large;"></p>
@@ -91,7 +91,9 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      aca la data
+                      <div id="boxm">
+
+                      </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
@@ -106,7 +108,7 @@
             </blockquote>
           </div>
 
-          <div class="card text-center">
+          <div id="chau" class="card text-center">
             <div id="seleccion" class="card-body">
               <button id="volver" type="button" class="btn btn-outline-warning btn-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
