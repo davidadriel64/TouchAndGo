@@ -91,12 +91,18 @@ function mostrarPareja(){
                   fin.appendChild(h3);
                   fin.appendChild(imgn);
 
+
                 }
 
       }
 
       function like(){
         let i = JSON.parse(localStorage.getItem('indice'));
+
+        if (Nparejas[i].id === 6) {
+          location.reload()
+        } else {
+
         Nparejas[i].visto = "true";
         localStorage.setItem('parejas', JSON.stringify(Nparejas));
 
@@ -108,36 +114,28 @@ function mostrarPareja(){
         localStorage.setItem('indice', JSON.stringify(i));
 
         if (Nparejas[i].like === misLikes[i].like) {
-          let timerInterval
-              Swal.fire({
-                title: 'MATCH!!!!',
-                html: 'HOY TENES UNA CITA',
-                timer: 5000,
-                timerProgressBar: true,
-                didOpen: () => {
-                  Swal.showLoading()
-                  const b = Swal.getHtmlContainer().querySelector('b')
-                  timerInterval = setInterval(() => {
-                    b.textContent = Swal.getTimerLeft()
-                  }, 100)
-                },
-                willClose: () => {
-                  clearInterval(timerInterval)
-                }
-              }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {
-                  console.log('I was closed by the timer')
-                }
-              })
-        }
-        animar()
+          
+          Swal.fire(
+            'MATCH!!!!',
+            'HOY TENES UNA CITA',
+            'success'
+          )
+          
+        } 
+        
         mostrarPareja()
+
+       }
 
       }
       
       function disLike(){
         let i = JSON.parse(localStorage.getItem('indice'));
+
+        if (Nparejas[i].id === 6) {
+          location.reload()
+        } else {
+
         Nparejas[i].visto = "true";
         localStorage.setItem('parejas', JSON.stringify(Nparejas));
 
@@ -149,31 +147,18 @@ function mostrarPareja(){
         localStorage.setItem('indice', JSON.stringify(i));
 
         if (Nparejas[i].like === 1) {
-          let timerInterval
-              Swal.fire({
-                title: ' TE PERDISTE UN MATCH!!!!',
-                html: 'COMPRA PREMIUM Y ENCONTRAS A TU PAREJA',
-                timer: 4000,
-                timerProgressBar: true,
-                didOpen: () => {
-                  Swal.showLoading()
-                  const b = Swal.getHtmlContainer().querySelector('b')
-                  timerInterval = setInterval(() => {
-                    b.textContent = Swal.getTimerLeft()
-                  }, 100)
-                },
-                willClose: () => {
-                  clearInterval(timerInterval)
-                }
-              }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {
-                  console.log('I was closed by the timer')
-                }
-              })
+
+          Swal.fire(
+            'TE PERDISTE UN MATCH!!!!',
+            'COMPRA PREMIUM, para ver tus likes',
+            'danger'
+          )
+         
         }
         
         mostrarPareja()
+      }
+
       }
 
       function volver(){
@@ -204,13 +189,12 @@ function mostrarPareja(){
 }
 
 
-//------------------ MOSTRAR MATCH -----------------------//
+//------------------ animar -----------------------//
 
-
-
-          function animar(){
-            
-}
+       
+        function animar(){
+                    
+        }
 
 
 //------------------ ELIMINAR DATOS -----------------------//

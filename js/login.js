@@ -5,7 +5,7 @@
 
 const indice = 0;
 const parejas = [
-    { 'id':0,'img':'../../img/mujer0.jpg','nombre':'Julia','edad':44,'biografia':'Ser feliz no significa tener una vida perfecta, sino saber reconocer la belleza y el valor de todas las imperfecciones','intereses':'beber','interesesDos':'Bailar','interesesTres':'Tu Corazon bebe','like':0,'visto':'false' },
+    { 'id':0,'img':'../../img/mujer0.jpg','nombre':'Julia','edad':44,'biografia':'Ser feliz no significa tener una vida perfecta, sino saber reconocer la belleza y el valor de todas las imperfecciones','intereses':'beber','interesesDos':'Bailar','interesesTres':'Tu Corazon bebe','like':1,'visto':'false' },
     { 'id':1,'img':'../../img/mujer1.jpg','nombre':'Pamela','edad':33,'biografia':'Abre tus brazos al cambio, pero no dejes de lado tus valores','intereses':'Fumar','interesesDos':'Parlotear','interesesTres':'Cantar','like':0,'visto':'false' },
     { 'id':2,'img':'../../img/mujer2.jpg','nombre':'jeny','edad':43,'biografia':'La única persona que necesitas en tu vida, es aquella que te demuestre que te necesita en la suya','intereses':'Marihuana','interesesDos':'Trekking','interesesTres':'Escalar lo que pinte','like':1,'visto':'false' },
     { 'id':3,'img':'../../img/mujer3.jpg','nombre':'La diana','edad':22,'biografia':'Una actitud positiva puede hacer sueños realidad','intereses':'bailar','interesesDos':'Salir a tomar algo','interesesTres':'Que me aten','like':0,'visto':'false' },
